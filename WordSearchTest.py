@@ -1,4 +1,5 @@
 import unittest
+from WordSearch import WordSearch
 
 
 class WordSearchTestCase(unittest.TestCase):

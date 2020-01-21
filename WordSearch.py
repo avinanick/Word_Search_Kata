@@ -37,24 +37,32 @@ class WordSearch():
                         # Once we find the first letter, begin a depth-first search in all directions for the rest of the word
                         word_coords.append((x,y))
                         x_direction = 0
+                        y_direction = 0
                         letter_index_in_word = 1
                         search_coords_stack = []
-                        search_coords_stack.append((x-1, y))
-                        search_coords_stack.append((x+1, y))
+                        search_coords_stack.append((x - 1, y))
+                        search_coords_stack.append((x + 1, y))
+                        search_coords_stack.append((x, y - 1))
+                        search_coords_stack.append((x, y + 1))
                         while len(word_coords) < len(current_word) and len(search_coords_stack) > 0:
                             next_coord = search_coords_stack.pop()
                             if len(self.grid) > next_coord[0] >= 0 and len(self.grid[x]) > next_coord[1] >= 0:
                                 current_x_direction = next_coord[0] - x
+                                current_y_direction = next_coord[1] - y
                                 if current_x_direction != 0:
                                     current_x_direction = current_x_direction / abs(current_x_direction)
-                                if current_x_direction != x_direction:
+                                if current_y_direction != 0:
+                                    current_y_direction = current_y_direction / abs(current_y_direction)
+                                if current_x_direction != x_direction or current_y_direction != y_direction:
                                     letter_index_in_word = 1
                                     word_coords = [(x,y)]
                                 x_direction = int(current_x_direction)
+                                y_direction = int(current_y_direction)
                                 if self.grid[next_coord[0]][next_coord[1]] == current_word[letter_index_in_word]:
                                     word_coords.append(next_coord)
                                     if len(word_coords) < len(current_word):
-                                        search_coords_stack.append((next_coord[0] + x_direction, next_coord[1]))
+                                        search_coords_stack.append((next_coord[0] + x_direction,
+                                                                    next_coord[1] + y_direction))
                                         letter_index_in_word += 1
                                     else:
                                         # Found the whole word!

@@ -41,19 +41,19 @@ class WordSearch():
                         search_coords_stack.append((x+1, y))
                         while len(word_coords) < len(current_word) and len(search_coords_stack) > 0:
                             next_coord = search_coords_stack.pop()
-                            if x < len(self.grid) and y < len(self.grid[x]):
+                            if len(self.grid) > next_coord[0] >= 0 and len(self.grid[x]) > next_coord[1] >= 0:
                                 current_x_direction = next_coord[0] - x
                                 if current_x_direction != 0:
                                     current_x_direction = current_x_direction / abs(current_x_direction)
                                 if current_x_direction != x_direction:
                                     letter_index_in_word = 1
                                     word_coords = [(x,y)]
-                                else:
-                                    letter_index_in_word += 1
+                                x_direction = int(current_x_direction)
                                 if self.grid[next_coord[0]][next_coord[y]] == current_word[letter_index_in_word]:
                                     word_coords.append(next_coord)
                                     if len(word_coords) < len(current_word):
                                         search_coords_stack.append((next_coord[0] + x_direction, next_coord[1]))
+                                        letter_index_in_word += 1
                                     else:
                                         # Found the whole word!
                                         self.solved_words[current_word] = word_coords

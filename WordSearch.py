@@ -49,7 +49,7 @@ class WordSearch():
                                     letter_index_in_word = 1
                                     word_coords = [(x,y)]
                                 x_direction = int(current_x_direction)
-                                if self.grid[next_coord[0]][next_coord[y]] == current_word[letter_index_in_word]:
+                                if self.grid[next_coord[0]][next_coord[1]] == current_word[letter_index_in_word]:
                                     word_coords.append(next_coord)
                                     if len(word_coords) < len(current_word):
                                         search_coords_stack.append((next_coord[0] + x_direction, next_coord[1]))

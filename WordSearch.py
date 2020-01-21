@@ -10,6 +10,7 @@ class WordSearch():
     def read_file(self, file_name):
         self.grid = []
         self.target_words = []
+        self.solved_words = {}
         with open(file_name) as word_search_csv:
             grid_reader = csv.reader(word_search_csv)
             for i, row in enumerate(grid_reader):
@@ -26,6 +27,7 @@ class WordSearch():
                         self.grid[j].append(letter)
 
     def solve_grid(self):
+        self.solved_words = {}
         for current_word in self.target_words:
             word_coords = []
             # Search the grid until we find the first letter of the word

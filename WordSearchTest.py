@@ -20,6 +20,14 @@ class WordSearchTestCase(unittest.TestCase):
         self.assertIn("FIRE", self.word_search.solved_words)
         self.assertIn((1, 4), self.word_search.solved_words["FIRE"])
 
+    def test_word_search_finds_vertical_words(self):
+        self.word_search.read_file("TestVerticalWordGrid.csv")
+        self.word_search.solve_grid()
+        self.assertIn("HERO", self.word_search.solved_words)
+        self.assertIn((2, 4), self.word_search.solved_words["HERO"])
+        self.assertIn("CRAFT", self.word_search.solved_words)
+        self.assertIn((6, 2), self.word_search.solved_words["CRAFT"])
+
 
 if __name__ == '__main__':
     unittest.main()

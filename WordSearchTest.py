@@ -28,6 +28,14 @@ class WordSearchTestCase(unittest.TestCase):
         self.assertIn("CRAFT", self.word_search.solved_words)
         self.assertIn((6, 2), self.word_search.solved_words["CRAFT"])
 
+    def test_word_search_finds_diagonal_words(self):
+        self.word_search.read_file("TestDiagonalWordGrid.csv")
+        self.word_search.solve_grid()
+        self.assertIn("RING", self.word_search.solved_words)
+        self.assertIn((4, 2), self.word_search.solved_words["RING"])
+        self.assertIn("FOOTMAN", self.word_search.solved_words)
+        self.assertIn((2, 5), self.word_search.solved_words["FOOTMAN"])
+
 
 if __name__ == '__main__':
     unittest.main()

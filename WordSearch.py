@@ -17,14 +17,14 @@ class WordSearch():
                 # The first row is the list of words in the grid, those following are the grid
                 if i == 0:
                     for word in row:
-                        self.target_words.append(word)
+                        self.target_words.append(word.upper())
                 else:
                     # Since we are treating the grid coordinates as traditional x and y cartesian coords,
                     # this will input the letters flipped across the diagonal for easy work later
                     for j, letter in enumerate(row):
                         if j >= len(self.grid):
                             self.grid.append([])
-                        self.grid[j].append(letter)
+                        self.grid[j].append(letter.upper())
 
     def solve_grid(self):
         self.solved_words = {}

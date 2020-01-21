@@ -32,9 +32,9 @@ class WordSearchTestCase(unittest.TestCase):
         self.word_search.read_file("TestDiagonalWordGrid.csv")
         self.word_search.solve_grid()
         self.assertIn("RING", self.word_search.solved_words)
-        self.assertIn((4, 2), self.word_search.solved_words["RING"])
+        self.assertIn((2, 5), self.word_search.solved_words["RING"])
         self.assertIn("FOOTMAN", self.word_search.solved_words)
-        self.assertIn((2, 5), self.word_search.solved_words["FOOTMAN"])
+        self.assertIn((2, 4), self.word_search.solved_words["FOOTMAN"])
 
 
 if __name__ == '__main__':

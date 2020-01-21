@@ -5,6 +5,7 @@ class WordSearch():
 
     grid = []
     target_words = []
+    solved_words = {}
 
     def read_file(self, file_name):
         self.grid = []
@@ -23,3 +24,6 @@ class WordSearch():
                         if j >= len(self.grid):
                             self.grid.append([])
                         self.grid[j].append(letter)
+
+    def solve_grid(self):
+        return #STUB

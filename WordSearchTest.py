@@ -14,6 +14,7 @@ class WordSearchTestCase(unittest.TestCase):
 
     def test_word_search_finds_horizontal_words(self):
         self.word_search.read_file("TestHorizontalWordGrid.csv")
+        self.word_search.solve_grid()
         self.assertIn("LINK", self.word_search.solved_words)
         self.assertIn((2,1), self.word_search.solved_words["LINK"])
         self.assertIn("FIRE", self.word_search.solved_words)

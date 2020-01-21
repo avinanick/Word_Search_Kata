@@ -44,6 +44,10 @@ class WordSearch():
                         search_coords_stack.append((x + 1, y))
                         search_coords_stack.append((x, y - 1))
                         search_coords_stack.append((x, y + 1))
+                        search_coords_stack.append((x - 1, y - 1))
+                        search_coords_stack.append((x + 1, y - 1))
+                        search_coords_stack.append((x - 1, y + 1))
+                        search_coords_stack.append((x + 1, y + 1))
                         while len(word_coords) < len(current_word) and len(search_coords_stack) > 0:
                             next_coord = search_coords_stack.pop()
                             if len(self.grid) > next_coord[0] >= 0 and len(self.grid[x]) > next_coord[1] >= 0:
